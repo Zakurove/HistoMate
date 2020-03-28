@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+<h1>
+	Add a New Set
+</h1>
+<form action="/cardioSets" method="POST">
+	<input type="text" placeholder="title" name="title">
+	<input type="text" placeholder="image url" name="image">
+	<input type="text" placeholder="description" name="description">
+	<button>
+		Add!
+	</button>
+</form>
+<%- include("../partials/footer") %>
+
+
