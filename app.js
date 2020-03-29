@@ -69,13 +69,13 @@ app.use("/cardioSets", cardioSetsRoutes);
 // Serve static assets if in production
 
 
-// app.listen(3000, function() { 
-//   console.log('Histology LMS has started... '); 
-// });
-app.listen(process.env.PORT, process.env.IP, function() { 
+app.listen(3000, function() { 
   console.log('Histology LMS has started... '); 
-
 });
+// app.listen(process.env.PORT, process.env.IP, function() { 
+//   console.log('Histology LMS has started... '); 
+
+// });
 
 
 
