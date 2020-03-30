@@ -30,7 +30,7 @@ router.post("/register", function(req, res){
             return res.redirect("register");
         }
         passport.authenticate("local")(req, res, function(){
-			req.flash("success", "Welcsome to HisoMate, " + user.username + "!");
+			req.flash("success", "Welcome to HisoMate, " + user.username + "!");
            res.redirect("/cardioSets");
         });
     });

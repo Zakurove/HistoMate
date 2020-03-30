@@ -27,7 +27,7 @@ var cardioSetsRoutes = require("./routes/cardioSets"),
 // then(() => console.log('MongoDB Connected...')).catch(err => console.log(err));
 
 // mongoose.connect("mongodb://localhost/HistoMate");
-
+ console.log(process.env.DATABASEURL);
  mongoose.connect(process.env.DATABASEURL);
 
 // app.use(bodyParser.json());
