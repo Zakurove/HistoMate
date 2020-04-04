@@ -1,5 +1,14 @@
   <%- include("../partials/header") %>
 
+
+	 
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 <h1 class="text-center">
   <%= cardioSet.title %>
 </h1>
@@ -7,7 +16,7 @@
   
 
 </p>
-
+ 
 
 
 
@@ -20,7 +29,7 @@
     <p> <%= cardioSet.description %>
         </p> 
   
-
+<img class="img-responsive" src="<%= cardioSet.images[0].url %>">
    
 
   </div>
@@ -32,21 +41,36 @@
   <p>
     
   </p>
-	  
-	  <a class="btn btn-warning btn-lg btn-block" href="/cardioSets/<%= cardioSet._id %>/edit">
+      
+      <a class="btn btn-warning btn-lg btn-block" href="/cardioSets/<%= cardioSet._id %>/edit">
      Edit
   </a>
-	  <form action="/cardioSets/<%= cardioSet._id %>?_method=DELETE" method="POST">
-		  <button class="btn btn-danger">
-			  Delete!
-		  </button>
-	  </form>
-	  
+      <form action="/cardioSets/<%= cardioSet._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-danger">
+              Delete!
+          </button>
+      </form>
+      
 </div>
 </div>
 
 
     </div>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 
     <!-- <div class="col-8">
 

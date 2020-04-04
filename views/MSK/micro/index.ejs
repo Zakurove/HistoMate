@@ -1,0 +1,50 @@
+<%- include("../../partials/header") %>
+
+
+
+
+<h1 class="text-center">
+	MSK: Microbiology Sets
+</h1>
+
+<!-- Here would show the slides and it's title -->
+
+<div class="container">
+	<a class="btn btn-info" href="/MSK/micro/new">Add a New Set</a>
+	<button type="button" class="btn btn-secondary">Design a Test</button>
+	<p></p>	
+  <div class="row border border-info">
+    <div class="col"> Title:</div>
+    <div class="col" href=""> ID:</div>
+    <div class="col" href=""> Created By:</div>
+    <div class="col-4"href=""> Number of Slides:</div>
+
+	</div>
+  </div>
+
+
+
+
+
+
+	 	<% mskMicros.forEach(function(mskMicro){ %>
+	<div>
+		<div class="container">
+	  <div class="row border border-info">
+		<div class="col"><p></p><a href="#" class="text-decoration-none"> <%= mskMicro.title %></a></div>
+		<div class="col" href=""><p></p><a href="#" class="text-decoration-none"> <%= mskMicro.id %></a></div>
+		<div class="col" href=""><p></p><a href="#" class="text-decoration-none"> <%= mskMicro.author.username %> </a></div>
+		<div class="col"href=""><p></p><a href="#" class="text-decoration-none"> Number of Slides</a> </div>
+
+	<p>
+			<a href="/MSK/micro/<%= mskMicro._id %>" class="btn btn-warning" >Study Set</a>
+		</p>
+		</div>
+	</div>
+		<% }); %>
+
+
+<%- include("../../partials/footer") %> 
+
+
+	 

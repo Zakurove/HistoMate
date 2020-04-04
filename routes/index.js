@@ -31,7 +31,7 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
 			req.flash("success", "Welcome to HisoMate, " + user.username + "!");
-           res.redirect("/cardioSets");
+           res.redirect("/");
         });
     });
 });
@@ -45,7 +45,7 @@ router.get("/login", function(req, res){
 //login logic
 //middleware
 router.post("/login", passport.authenticate("local", {
-    successRedirect: "/cardioSets",
+    successRedirect: "/",
     failureRedirect: "/login",
 	failureFlash: true
 }), function(req, res){

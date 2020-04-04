@@ -3,6 +3,25 @@ var router = express.Router();
 var CardioSet = require("../models/cardioSet");
 var User      = require("../models/user");
 var middleware = require("../middleware");
+var multer = require('multer');
+var test = require('../middleware/upload');
+var { cloudinary, storage } = require('../cloudinary');
+var upload = multer({ storage });
+// const { asyncErrorHandler } = require('../middleware');
+// var storage = multer.diskStorage({
+//   filename: function(req, file, callback) {
+//     callback(null, Date.now() + file.originalname);
+//   }
+// });
+// var imageFilter = function (req, file, cb) {
+//     // accept image files only
+//     if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/i)) {
+//         return cb(new Error('Only image files are allowed!'), false);
+//     }
+//     cb(null, true);
+// };
+// var upload = multer({ storage: storage, fileFilter: imageFilter})
+
 // var methodOverride = require("method-override");
 
 //CARDIO ROUTES!!!
@@ -20,30 +39,50 @@ router.get("/", middleware.isLoggedIn, function(req, res){
 });
 
 
+// router.get("/uploads", (req, res) => {
+//  res.render("cardioSets/uploads")
+// })
+
+// router.post('/', upload.array('images', 4), asyncErrorHandler(cardioSetCreate));
 
 //CREATE - add new campground to DB
-router.post("/", middleware.isLoggedIn, function(req, res){
-    // get data from form and add to campgrounds array
-    var title = req.body.title;
-    var image = req.body.image;
-    var description = req.body.description;
-	var author = {
-		id: req.user._id,
-		username: req.user.username
+router.post("/", middleware.isLoggedIn, upload.array('images', 4), async function(req, res) {
+	try {
+		console.log(req.files);
+		req.body.cardioSet.images = [];
+		for(const file of req.files) {
+			req.body.cardioSet.images.push({
+				url: file.secure_url,
+				public_id: file.public_id
+			});
+		}
+		// add author to campground
+		req.body.cardioSet.author = {
+			id: req.user._id,
+			username: req.user.username
+		}
+		const cardioSet = await CardioSet.create(req.body.cardioSet);
+		console.log(cardioSet);
+		res.redirect(`/cardioSets/${cardioSet.id}`);
+	} catch(err) {
+		req.flash('error', err.message);
+		res.redirect('back');
 	}
-	console.log(req.user.username)
-    var newCardioSet = {title: title, image: image, description: description, author: author}
-    // Create a new campground and save to DB
-    CardioSet.create(newCardioSet, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else {
-			req.flash("success", "Successfully added set!")
-            //redirect back to campgrounds page
-            res.redirect("/cardioSets");
-        }
-    });
 });
+
+	  
+	  
+  // add cloudinary url for the image to the cardioSet object under image property
+ 
+//   CardioSet.create(req.body.cardioSet, function(err, cardioSet) {
+//     if (err) {
+//       req.flash('error', err.message);
+//       return res.redirect('back');
+//     }
+//     res.redirect('/cardioSets/' + cardioSet.id);
+//   });
+// });
+// });
 // //UPLOAD STUFF
 // app.post('/uploadDB', upload.single('file'), (req, res) => {
 //   var filePath = './uploads/' + req.file.originalname;

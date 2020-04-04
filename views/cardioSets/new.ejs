@@ -1,15 +1,58 @@
 <%- include("../partials/header") %>
-<h1>
+<!-- <h1>
 	Add a New Set
 </h1>
-<form action="/cardioSets" method="POST">
-	<input type="text" placeholder="title" name="title">
-	<input type="text" placeholder="image url" name="image">
-	<input type="text" placeholder="description" name="description">
+<form action="/cardioSets"  method="POST"  enctype="multipart/form-data">
+	<input type="text" placeholder="title" name="cardioSet[title]">
+	<lable for ='image'>Image</lable>
+	<input type="file" id="image"  name="image" accept="image/*" required>
+	<input type="text" placeholder="description" name="cardioSet[description]">
 	<button>
 		Add!
 	</button>
-</form>
+</form> -->
+
+
+    <div class="row">
+        <h1 style="text-align: center">Create a New Set</h1>
+        <div style="width: 30%; margin: 25px auto;">
+            <form action="/cardioSets" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cardioSet[title]" placeholder="title">
+                </div>
+                <div class="form-group">
+                    <!-- <label for="image">Image</label>
+                    <input type="file" id="image" name="images" accept="image/*" > -->
+					<input type="file" name="images" accept="image/*" multiple >
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cardioSet[description]" placeholder="description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/cardioSets">Go Back</a>
+        </div>
+    </div>
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+function upload(){
+  const formData = new FormData();
+  let file = document.getElementById("image-file").files[0];
+  formData.append('file', file);
+  console.log(formData);
+
+axios.post("http://localhost:3000/uploadDB", formData, {
+}).then(res => { // then print response status
+  console.log(res.statusText);
+}).catch((error) => {
+  console.log("erooooorrrr!");
+});
+}
+
+</script> -->
 <%- include("../partials/footer") %>
 
 

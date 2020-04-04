@@ -1,18 +1,8 @@
-// var mongoose = require("mongoose");
+var mongoose = require("mongoose");
 
-// // All Blocks SCHEMA
-Function
-// //Cardiovascular Sets
-// var cvsSchema = new mongoose.Schema({
-// 	8: String,
-// 	image: String,
-// 	description: String,
-// 	 notes: [
-//       {
-//          type: mongoose.Schema.Types.ObjectId,
-//          ref: "Note"
-//       }
-//    ]
-// });
+// Blocks SCHEMA
+var blockSchema = new mongoose.Schema({
+	name: String,
+	description: String
 
-// module.exports = mongoose.model("Slide", slideSchema);
+});
