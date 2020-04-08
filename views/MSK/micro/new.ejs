@@ -1,16 +1,15 @@
-<%- include("../partials/header") %>
+<%- include("../../partials/header") %>
 
 
-	
-	
-    <div class="row">
+
+        <div class="row">
        
         <div style="width: 30%; margin: 25px auto;">
 			 <h1 class="text-info">Create a learning set:</h1>
-            <form action="/cardioSets" method="POST" enctype="multipart/form-data">
+            <form action="/MSK/micro" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
 					Title of the set:
-                    <input class="form-control" type="text" name="cardioSet[title]" placeholder="Title">
+                    <input class="form-control" type="text" name="mskMicro[title]" placeholder="Title">
                 </div>
                 <div class="form-group">
                     <!-- <label for="image">Image</label>
@@ -18,30 +17,18 @@
 					Upload images for the set:
 					<input class="btn btn-info"type="file" name="images" accept="image/*" multiple >
                 </div>
-                <!-- <div class="form-group">
-					Explanation of the set:
-                    <input class="form-control" type="text" name="cardioSet[description]" placeholder="description">
-                </div> -->
 				<div class="form-group">
    				 <label for="exampleFormControlTextarea1">Explanation of the set:</label>
-   				 <textarea class="form-control"type="text" name="cardioSet[description]" placeholder="Explanation" id="exampleFormControlTextarea1" rows="6"></textarea>
+   				 <textarea class="form-control"type="text" name="mskMicro[description]" placeholder="Explanation" id="exampleFormControlTextarea1" rows="6"></textarea>
  				 </div>
                 <div class="form-group">
                     <button class="btn btn-lg btn-warning btn-block">Submit!</button>
                 </div>
             </form>
-            <a href="/cardioSets">Go Back</a>
+            <a href="/MSK/micro" class="btn btn-secondary">Previous Page</a>
         </div>
     </div>
 	
-	
-	
-	
-
-
-
-
-
-<%- include("../partials/footer") %>
+<%- include("../../partials/footer") %>
 
 

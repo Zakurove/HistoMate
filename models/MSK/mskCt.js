@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var mskMicroSchema = new mongoose.Schema({
+var mskCtSchema = new mongoose.Schema({
 	title: String,
 	images: [ {url: String, public_id: String} ],
 	description: String,
@@ -16,4 +16,4 @@ var mskMicroSchema = new mongoose.Schema({
 
 
 
-module.exports = mongoose.model("MskMicro", mskMicroSchema);
+module.exports = mongoose.model("MskCt", mskCtSchema);

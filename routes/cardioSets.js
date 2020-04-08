@@ -125,7 +125,7 @@ router.get("/:id", middleware.isLoggedIn, function(req, res){
 	
 })
 //EDIT - transfers to the editing page of the set
-router.get("/:id/edit", middleware.checkCardioSetOwnership,  function(req,res){
+router.get("/:id/edit", checkCardioSetOwnership,  function(req,res){
 		  CardioSet.findById(req.params.id, function(err, foundCardioSet){
     if(err){
       res.redirect("/cardioSets");  
@@ -150,7 +150,7 @@ router.put("/:id", function(req,res){
 });
 
 // DESTROY CARDIOSET ROUTE
-router.delete("/:id", middleware.checkCardioSetOwnership, function(req, res){
+router.delete("/:id", checkCardioSetOwnership, function(req, res){
    CardioSet.findByIdAndRemove(req.params.id, function(err){
       if(err){
           res.redirect("/cardioSets");
@@ -161,22 +161,22 @@ router.delete("/:id", middleware.checkCardioSetOwnership, function(req, res){
 });
 
 
-// function checkCardioSetOwnership(req, res, next) {
-// 	if(req.isAuthenticated()){
-// 		CardioSet.findById(req.params.id, function(err, foundCardioSet){
-// 			if(err){
-// 				res.redirect("back");
-// 			} else {
-// 				if(foundCardioSet.author.id.equals(req.user._id)) {
-// 					next();
-// 				} else {
-// 					res.redirect("back");
-// 				}
-// 			}
-// 		});
-// 	} else {
-// 		res.redirect("back");
-// 	}
-// }
+function checkCardioSetOwnership(req, res, next) {
+	if(req.isAuthenticated()){
+		CardioSet.findById(req.params.id, function(err, foundCardioSet){
+			if(err){
+				res.redirect("back");
+			} else {
+				if(foundCardioSet.author.id.equals(req.user._id)) {
+					next();
+				} else {
+					res.redirect("back");
+				}
+			}
+		});
+	} else {
+		res.redirect("back");
+	}
+}
 
 module.exports = router;
