@@ -235,7 +235,7 @@ router.post("/imaging", middleware.isLoggedIn, upload.array('images', 4), async 
 			id: req.user._id,
 			username: req.user.username
 		}
-		const mskImaging = await MskImaing.create(req.body.mskImaging);
+		const mskImaging = await MskImaging.create(req.body.mskImaging);
 		console.log(mskImaging);
 		res.redirect(`/MSK/imaging/${mskImaging.id}`);
 	} catch(err) {
@@ -257,7 +257,7 @@ router.get("/imaging/:id", middleware.isLoggedIn, function(req, res){
 			console.log(err);
 		} else { 
 			//render page of the set
-			res.render("MSKimaging/show", {mskImaging: foundMskImaging});
+			res.render("MSK/imaging/show", {mskImaging: foundMskImaging});
 		}	
 	});
 })
