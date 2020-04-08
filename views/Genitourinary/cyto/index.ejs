@@ -1,0 +1,51 @@
+<%- include("../../partials/header") %>
+
+
+
+
+
+
+<!-- Here would show the slides and it's title -->
+
+<div class="container">
+	<H1 class="text-center pb-2 text-info">
+	Genitourinary: Cytology Sets
+</H1>
+	<a class="btn btn-secondary" href="/Genitourinary">Previous Page</a>
+	<a class="btn btn-info" href="/Genitourinary/cyto/new">Add a New Set</a>
+	<p></p>	
+  <div class="row border border-info">
+    <div class="col"> Title:</div>
+    <div class="col" href=""> ID:</div>
+    <div class="col" href=""> Created By:</div>
+    <div class="col-4"href=""> Number of Slides:</div>
+
+	</div>
+  </div>
+
+
+
+
+
+
+	 	<% genitoCytos.forEach(function(genitoCyto){ %>
+	<div>
+		<div class="container">
+	  <div class="row border border-info">
+		<div class="col"><p></p><a href="#" class="text-decoration-none"> <%= genitoCyto.title %></a></div>
+		<div class="col" href=""><p></p><a href="#" class="text-decoration-none"> <%= genitoCyto.id %></a></div>
+		<div class="col" href=""><p></p><a href="#" class="text-decoration-none"> <%= genitoCyto.author.username %> </a></div>
+		<div class="col"href=""><p></p><a href="#" class="text-decoration-none"> Number of Slides</a> </div>
+
+	<p>
+			<a href="/Genitourinary/cyto/<%= genitoCyto._id %>" class="btn btn-warning" >Study Set</a>
+		</p>
+		</div>
+	</div>
+		<% }); %>
+
+
+<%- include("../../partials/footer") %> 
+
+
+	 

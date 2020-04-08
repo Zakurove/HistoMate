@@ -24,7 +24,14 @@ var express        = require("express"),
 // Requiring Routes
 var cardioSetsRoutes = require("./routes/cardioSets"),
     indexRoutes      = require("./routes/index"),
-	MskRoutes        = require("./routes/MSK")
+	MskRoutes        = require("./routes/MSK"),
+	RespRoutes        = require("./routes/Respiratory"),
+	CardioRoutes        = require("./routes/Cardiovascular"),
+	EndoRoutes        = require("./routes/Endocrine"),
+	GastroRoutes        = require("./routes/Gastrointestinal"),
+	GenitoRoutes        = require("./routes/Genitourinary"),
+	HemaRoutes        = require("./routes/Hematology"),
+	NeuroRoutes        = require("./routes/Neurology")
 
 // mongoose.connect("mongodb://localhost/HistoMate");
 
@@ -74,6 +81,13 @@ app.use(function(req, res, next){
 app.use(indexRoutes);
 app.use("/cardioSets", cardioSetsRoutes);
 app.use("/MSK", MskRoutes);
+app.use("/Cardiovascular", CardioRoutes);
+app.use("/Endocrine", EndoRoutes);
+app.use("/Gastrointestinal", GastroRoutes);
+app.use("/Genitourinary", GenitoRoutes);
+app.use("/Hematology", HemaRoutes);
+app.use("/Neurology", NeuroRoutes);
+app.use("/Respiratory", RespRoutes);
 // app.use(uploadRoutes);
 // app.use(slidesRoutes);
 

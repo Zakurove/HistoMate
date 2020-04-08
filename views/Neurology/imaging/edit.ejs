@@ -1,0 +1,30 @@
+<%- include("../../partials/header") %>
+
+
+
+        <div class="row">
+       
+        <div style="width: 30%; margin: 25px auto;">
+			 <h1 class="text-info">Edit this set:</h1>
+            <form action="/Neurology/imaging" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+					Title of the set:
+                    <input class="form-control" type="text" name="neuroImaging[title]" placeholder="Title">
+                </div>
+                <div class="form-group">
+					Upload images for the set:
+					<input class="btn btn-info"type="file" name="images" accept="image/*" multiple >
+                </div>
+				<div class="form-group">
+   				 <label for="exampleFormControlTextarea1">Explanation of the set:</label>
+   				 <textarea class="form-control"type="text" name="neuroImaging[description]" placeholder="Explanation" id="exampleFormControlTextarea1" rows="6"></textarea>
+ 				 </div>
+                <div class="form-group">
+                    <button class="btn btn-lg btn-warning btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/Neurology/imaging">Go Back</a>
+        </div>
+    </div>
+	
+<%- include("../../partials/footer") %>

@@ -12,6 +12,10 @@ var flash     = require("connect-flash");
 router.get("/", function(req, res){
     res.render("mainPage");
 });
+//about route
+router.get("/about", function(req, res){
+    res.render("about");
+});
 
 
 //AUTHENTICAION ROUTES
